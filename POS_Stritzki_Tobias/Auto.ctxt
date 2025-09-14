@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Auto
+comment1.params=farbe
+comment1.target=void\ setFarbe(java.lang.String)
+comment2.params=bauJahrAuto
+comment2.target=void\ setBauJahr(int)
+comment3.params=
+comment3.target=void\ Auto()
+numComments=4
