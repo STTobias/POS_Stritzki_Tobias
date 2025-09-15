@@ -1,28 +1,32 @@
 public class Student
 {
-    
+
     private String name;
     private float kg;
     private float cm;
     private int geburtsjahr;
     private char geschlecht;
-  
+
     public void setName(String name){
         this.name = name;
     }
-    public void setGeburtsjahr(int gebjahr){
-        this.geburtsjahr = gebjahr;
+
+    public void setGeburtsjahr(int geburtsjahr){
+        this.geburtsjahr = geburtsjahr;
     }
+
     public void setKg(float kilogramm){
         this.kg = kilogramm;
     }
+
     public void setCm(float centimeter){
         this.cm = centimeter;
     }
+
     public void setGeschlecht(char geschlecht){
         this.geschlecht = geschlecht;
     }
-   
+
     public Student(String name, int geburtsjahr,float kg, float cm, char geschlecht){
         this.setName(name);
         this.setGeburtsjahr(geburtsjahr);
@@ -30,20 +34,20 @@ public class Student
         this.setCm(cm);
         this.setGeschlecht(geschlecht);
     }
-   
+
     public void printStudent(){
         System.out.println("Name: " + this.name + " (Geb. " + this.geburtsjahr + ")");
         System.out.println("BMI: " + bmi_rechner(this.kg, this.cm));
         System.out.println("Dein Geschlecht: " + MannOderFrau(this.geschlecht));
         System.out.println("Du bist: " + bmi_werter(this.geschlecht));
     }
-   
+
     public float bmi_rechner(float kg,float cm){
         cm /= 100;
         float ergebnis = (kg / (cm*cm));
         return ergebnis;
     }
- 
+
     public String MannOderFrau(char geschlecht){
         if (geschlecht == 'm'){
             return "Männlich";
@@ -64,7 +68,7 @@ public class Student
                 return "Untergewicht";
             }
             else if (bmi_rechner(this.kg, this.cm) > normal_max_m){
-                return "Übergwicht";
+                return "Übergewicht";
             }
             else return "Normal";
         }
