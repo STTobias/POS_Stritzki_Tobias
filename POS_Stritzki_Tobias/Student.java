@@ -8,6 +8,11 @@ public class Student
     private char geschlecht;
 
     public void setName(String name){
+        if  (name.length() < 3) {
+            throw new IllegalArgumentException("Der Name muss mindestens 3 Buchstaben haben!!!");
+        } else if (name.length() > 50) {
+            throw new IllegalArgumentException("Der Name darf nicht mehr als 50 Buchstaben haben!!!");
+        }
         this.name = name;
     }
 
@@ -65,19 +70,19 @@ public class Student
         int normal_min_f = 19;
         if (geschlecht == 'm'){
             if (bmi_rechner(this.kg, this.cm) < normal_min_m){
-                return "Untergewicht";
+                return "Iss was du kek";
             }
             else if (bmi_rechner(this.kg, this.cm) > normal_max_m){
-                return "Übergewicht";
+                return "Du bist Fett!";
             }
             else return "Normal";
         }
         else if (geschlecht == 'f'){
             if (bmi_rechner(this.kg, this.cm) < normal_min_f){
-                return "Untergewicht";
+                return "Iss was du kek";
             }
             else if (bmi_rechner(this.kg, this.cm) > normal_max_f){
-                return "Übergewicht";
+                return "Du bist Fett!";
             }
             else return "Normal";
         }
