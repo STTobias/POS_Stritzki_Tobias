@@ -1,28 +1,26 @@
 /**
  * Write a description of class Student here.
  *
- * @author (Jakob C)
- * @version (15.9.2025)
+ * @author (Tobias S.)
+ * @version (29.09.2025)
  */
-public class Student
+public class Person
 {
     // Meine Variablen
     private String name;
     private double kg;
     private double cm;
-    private int gebjahr;
     private char gender;
 
-    //Student Objekt
-    public Student(String name, int gebjahr,double kg, double cm, char gender){
-        this.setName(name);
-        this.setGebjahr(gebjahr);
-        this.setKg(kg);
-        this.setCm(cm);
-        this.setGender(gender);
+    //Person Objekt
+    public Person(){
+        this.setName("Test");
+        this.setKg(80);
+        this.setCm(180);
+        this.setGender('m');
     }
-
-    public Student(String name,boolean isMale,double cm, double kg){
+    
+    public Person(String name,boolean isMale,double cm, double kg){
         this.setName(name);
         this.setKg(kg);
         this.setCm(cm);
@@ -32,8 +30,17 @@ public class Student
         else this.setGender('f');
     }  
     
+    //Die Getter
+    public String getName(){
+        return name;
+    }
+    
+    public double getKg(){
+        return kg;
+    }
+    
     //Die Setter
-    private void setName(String name){
+    public void setName(String name){
         // TODO: Seperate Meldung zu kurz oder zu lang
         if (name.length() < 3){
             throw new IllegalArgumentException("Name muss mind. 3 Buchstaben haben");
@@ -44,11 +51,7 @@ public class Student
         this.name = name;
     }
 
-    private void setGebjahr(int gebjahr){
-        this.gebjahr = gebjahr;
-    }
-
-    private void setKg(double kilogramm){
+    public void setKg(double kilogramm){
         if (kilogramm > 635) {
             throw new IllegalArgumentException("Mehr als 635kg nicht möglich");
         } else if (kilogramm < 2) {
@@ -57,7 +60,7 @@ public class Student
         this.kg = kilogramm;
     }
 
-    private void setCm(double centimeter){
+    public void setCm(double centimeter){
         if (centimeter > 250) {
             throw new IllegalArgumentException("Größer als 250cm ist nicht möglich");
         } else if (centimeter < 50) {
@@ -66,7 +69,7 @@ public class Student
         this.cm = centimeter;
     }
 
-    private void setGender(char gender){
+    public void setGender(char gender){
         gender = Character.toLowerCase(gender);
         if (gender != 'm' && gender != 'f'){
             throw new IllegalArgumentException("m oder f eingeben");
@@ -74,17 +77,17 @@ public class Student
         this.gender = gender;
     }
 
-    //Print Student Info
-    public void printStudent(){
-        System.out.println("Name: " + this.name + " (Geb. " + this.gebjahr + ")");
+    //Print Person Info
+    public void printPerson(){
+        System.out.println("Name: " + this.name);
         System.out.println("Gewicht: " + this.kg);
         System.out.println("Größe: " + this.cm);
-        System.out.println("BMI: " + this.bmi_rechner());
+        System.out.println("BMI: " + this.bmiRechner());
         System.out.println("Dein Geschlecht: " + this.mannOderFrau());
-        System.out.println("Du bist: " + this.bmi_werter());
+        System.out.println("Du bist: " + this.bmiWerter());
     }
     //BMI Rechner
-    public double bmi_rechner(){
+    public double bmiRechner(){
         double cmInMetern = this.cm / 100.0f;
         double ergebnis = (this.kg / (cmInMetern*cmInMetern));
         return ergebnis;
@@ -100,26 +103,26 @@ public class Student
         else throw new IllegalArgumentException("Geben Sie 'm' oder 'f' ein");
     }
     //BMI Schauen ob unter/über/normalgewicht
-    public String bmi_werter(){
-        int normal_max_m = 25;
-        int normal_min_m = 20;
-        int normal_max_f = 24;
-        int normal_min_f = 19;
-        double bmi = this.bmi_rechner();
+    public String bmiWerter(){
+        int normalMaxM = 25;
+        int normalMinM = 20;
+        int normalMaxF = 24;
+        int normalMinF = 19;
+        double bmi = this.bmiRechner();
         if (gender == 'm'){
-            if (bmi < normal_min_m){
+            if (bmi < normalMinM){
                 return "Untergewicht";
             }
-            if (bmi > normal_max_m){
+            if (bmi > normalMaxM){
                 return "Übergewicht";
             }
             return "Normal";
         }
         if(gender == 'f'){
-            if (bmi < normal_min_f){
+            if (bmi < normalMinF){
                 return "Untergewicht";
             }
-            if (bmi > normal_max_f){
+            if (bmi > normalMaxF){
                 return "Übergewicht";
             }
             return "Normal";
