@@ -2,7 +2,7 @@
  * Write a description of class Auto here.
  *
  * @author (Tobias S.)
- * @version (29.09.2025)
+ * @version (9.10.2025)
  */
 public class Auto
 {
